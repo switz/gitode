@@ -4,9 +4,17 @@
 
 var express = require('express'),
 	routes = require('./routes'),
-	git = require('nodegit')
+	user = require('./routes/user'),
+	cogs = require('./cogs/cog'),
+	mongoose = require('mongoose'),
+	pushover = require('pushover'),
+	// Repositories
+	repos = pushover(__dirname + '/repositories'),
+	// Create Server
+	app = module.exports = express.createServer();
 
-var app = module.exports = express.createServer();
+
+mongoose.connect('mongodb://localhost/gitode');
 
 // Configuration
 app.configure(function() {
@@ -29,8 +37,21 @@ app.configure('production', function() {
 	app.use(express.errorHandler());
 });
 
-// Routes
+repos.on('push', cogs.push);
+
+// Index
 app.get('/', routes.index);
+// User
+
+app.get('/user/login', user.login);
+app.post('/user/login', user.loginPOST);
+
+app.get('/user/signup', user.signup);
+app.post('/user/signup', user.signupPOST);
+
+app.get('/user/logout', user.logout);
+
+// Run Repo Listener [gets forwarded to app.listen()]
+repos.listen(7000);
 
 app.listen(3000);
-console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

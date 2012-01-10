@@ -1,0 +1,41 @@
+{
+    "name" : "git-emit",
+    "description" : "expose git hooks through an event emitter",
+    "version" : "0.0.0",
+    "repository" : {
+        "type" : "git",
+        "url" : "git://github.com/substack/node-git-emit.git"
+    },
+    "main" : "index.js",
+    "keywords" : [
+        "git",
+        "hook",
+        "emit",
+        "repository"
+    ],
+    "directories" : {
+        "lib" : ".",
+        "example" : "example",
+        "test" : "test"
+    },
+    "scripts" : {
+        "test" : "tap test/*.js"
+    },
+    "dependencies" : {
+        "seq" : "0.3.x",
+        "dnode" : "0.9.x"
+    },
+    "devDependencies" : {
+        "tap" : "0.0.x",
+        "pushover" : "0.0.x"
+    },
+    "engines" : {
+        "node" : ">=0.4.0"
+    },
+    "license" : "MIT",
+    "author" : {
+        "name" : "James Halliday",
+        "email" : "mail@substack.net",
+        "url" : "http://substack.net"
+    }
+}
