@@ -3,17 +3,63 @@
 <head>
 	<meta charset="utf-8">
 	<title>Gitode</title>
-	
+
+<!--	<link rel="stylesheet" href="stylesheets/filebrowser.css" type="text/css" />	-->
 	<link rel="stylesheet" href="stylesheets/style.css" type="text/css" />
 
-	<script src="js/jquery.js" type="text/javascript">$("#content").hide();</script>
-	<script src="js/underscore.js" type="text/javascript"></script>
-	<script src="js/backbone.js" type="text/javascript"></script>
 	<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 </head>
 <body>
+	<noscript>
+	<strong>Sorry, you NEED javascript to run this website.</strong>
+	</noscript>
+	<header>
+		<h1>Gitode</h1>
+	</header>
+	<div id="container">
+		<div id="content">
+			<a id="btn-reset" href="#!revertfiles" class="btn"><span>revert files</span></a>
+			
+			<div id="breadcrumb"></div>
+			<div id="ls">tests</div>
+			
+			<div id="fileadmin">
+			<div class="mkdir ib"><input id="dirname" placeholder="new folder name" /><a class="btn"><span>create folder</span></a></div>
+			<div class="upload ib"><input type="file" name="fileupload" id="fileupload" /><a class="btn"><span>upload here</span></a></div>
+			</div>
+			
+			<div id="fileview"></div>
+			
+			<div class="bg">
+			</div>
+		</div>
+	</div>
+	<footer>footer</footer>
+	<script src="javascripts/jquery.js" type="text/javascript">$("#content").hide();</script>
+	<script src="javascripts/underscore.js" type="text/javascript"></script>
+	<script src="javascripts/backbone.js" type="text/javascript"></script>
+	<script src="javascripts/backbone-forms.js" type="text/javascript"></script>
+<!--	<script src="javascripts/filebrowser.js" type="text/javascript"></script>-->
 	<script src="javascripts/scripts.js" type="text/javascript"></script>
+	<script type="text/template" id="repository_list_template">
+	<article>
+		<h2>
+			<a href="#/repository/<%= slug %>"><%= name %></a>
+		</h2>	
+	</article>	
+	</script>
+	<script type="text/template" id="file_template">
+	<textarea><%=Contents%></textarea>
+	</script>
+	<script type="text/template" id="repository_template">
+	<article>
+		<h2>
+			<a href="#/repository/<%= slug %>"><%= name %></a>
+		</h2>	
+		<%= files %>
+	</article>	
+	</script>
 </body>
 </html>

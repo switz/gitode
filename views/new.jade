@@ -1,0 +1,39 @@
+#{title}
+form(method='post', action='/new')
+	fieldset
+		li
+			label Name*
+			div
+				input(name='repository[name]', id='name', class='input', placeholder='Name', required)
+			div.clear
+		li
+			label Description
+			div
+				textarea(name='repository[description]', id='description', type='textbox', placeholder='Description', cols=40, rows=10)
+			div.clear
+		li
+			label Project
+			div
+				input(name='repository[project]', id='project', class='input', placeholder='Project')
+			div.clear
+		li
+			label Private?
+			div
+				select(id='public')
+					option(value='Yes') Yes
+					option(value='No') No
+			div.clear
+		li
+			label Allow Pull Requests?
+			div
+				select(id='allowPullRequests')
+					option(value='Yes') Yes
+					option(value='No') No
+			div.clear
+		li
+			div
+				input(type='hidden',id='user')
+				input(type='hidden',id='location')
+				input(type='hidden',id='created')
+				input(type='submit',class='submit')
+			div.clear
